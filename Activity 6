@@ -13,7 +13,7 @@ public:
         imag = i;
     }
 
-
+// Get Data From User 
     void getData() {
         cout << "Enter real part: ";
         cin >> real;
@@ -21,6 +21,7 @@ public:
         cin >> imag;
     }
 
+// Function For Display Data 
     void displayData() {
         if (imag >= 0)
             cout << real << " + " << imag << "i" << endl;
@@ -29,7 +30,7 @@ public:
     }
 
 
-    Complex operator/(Complex c);
+    Complex operator/(Complex c); // Defining Operator Overloading 
 };
 
 
@@ -49,12 +50,14 @@ Complex Complex::operator/(Complex c) {
     return temp;
 }
 
+//Main Function 
 int main() {
     Complex s1, s2, result;
-
+// Function call
     cout << "Input First Complex Number:\n";
     s1.getData();
-    cout << "\nInput Second Complex Number:\n";
+    
+    cout << "tInput Second Complex Number:\n";
     s2.getData();
 
     cout << "\nFirst Complex Number: ";
@@ -62,7 +65,7 @@ int main() {
     cout << "Second Complex Number: ";
     s2.displayData();
 
-
+// Display Result 
     result = s1 / s2; 
 
     cout << "\nResult of Division: ";
