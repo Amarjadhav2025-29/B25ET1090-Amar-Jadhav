@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    double real;
+    double imag;
+
+public:
+
+    Complex(double r = 0, double i = 0) {
+        real = r;
+        imag = i;
+    }
+
+
+    void getData() {
+        cout << "Enter real part: ";
+        cin >> real;
+        cout << "Enter imaginary part: ";
+        cin >> imag;
+    }
+
+    void displayData() {
+        if (imag >= 0)
+            cout << real << " + " << imag << "i" << endl;
+        else
+            cout << real << " - " << -imag << "i" << endl;
+    }
+
+
+    Complex operator/(Complex c);
+};
+
+
+Complex Complex::operator/(Complex c) {
+    Complex temp;
+    double denominator = (c.real * c.real) + (c.imag * c.imag);
+
+    if (denominator == 0) {
+        cout << "Error: Cannot divide by zero complex number." << endl;
+        temp.real = 0;
+        temp.imag = 0;
+        return temp;
+    }
+
+    temp.real = ((real * c.real) + (imag * c.imag)) / denominator;
+    temp.imag = ((imag * c.real) - (real * c.imag)) / denominator;
+    return temp;
+}
+
+int main() {
+    Complex s1, s2, result;
+
+    cout << "Input First Complex Number:\n";
+    s1.getData();
+    cout << "\nInput Second Complex Number:\n";
+    s2.getData();
+
+    cout << "\nFirst Complex Number: ";
+    s1.displayData();
+    cout << "Second Complex Number: ";
+    s2.displayData();
+
+
+    result = s1 / s2; 
+
+    cout << "\nResult of Division: ";
+    result.displayData();
+
+    return 0;
+}
