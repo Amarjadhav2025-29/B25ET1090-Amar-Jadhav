@@ -56,15 +56,15 @@ Complex Complex::operator/(Complex c) {
 int main() {
     Complex s1, s2, result;       // Object Decleration And Calling to constructor 
 
-// Function call for get data 
+   // Function call for get data 
     cout << "Input First Complex Number:\n";
     s1.getData();
     
     cout << "tInput Second Complex Number:\n";
     s2.getData();
 
-// Function call for Display data 
-    cout << "\nFirst Complex Number: ";
+    // Function call for Display data 
+    cout << "\n First Complex Number: ";
     s1.displayData();
     cout << "Second Complex Number: ";
     s2.displayData();
@@ -72,8 +72,8 @@ int main() {
 
     result = s1 / s2; 
 
-// Display Result 
-    cout << "\nResult of Division: ";
+    // Display Result 
+    cout << "\n Result of Division: ";
     result.displayData();
 
     return 0;
