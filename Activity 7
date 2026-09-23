@@ -1,0 +1,105 @@
+#include <iostream>
+using namespace std;
+
+class String {
+private:
+    char* str;  // Pointer to char for dynamic memory allocation
+    int length; // Stores the length of the string
+
+    // Private helper function to calculate string length manually
+    int calculateLength(const char* s) {
+        int len = 0;
+        while (s[len] != '\0') {
+            len++;
+        }
+        return len;
+    }
+
+    // Private helper function to copy strings manually
+    void copyString(char* destination, const char* source) {
+        int i = 0;
+        while (source[i] != '\0') {
+            destination[i] = source[i];
+            i++;
+        }
+        destination[i] = '\0'; // Add the null terminator
+    }
+
+public:
+    // 1. Default Constructor
+    String() {
+        length = 0;
+        str = new char[1];
+        str[0] = '\0'; // Initialize with an empty string
+    }
+
+    // 2. Parameterized Constructor (Constructor Overloading)
+    String(const char* s) {
+        length = calculateLength(s);
+        str = new char[length + 1]; // Allocate memory including null terminator
+        copyString(str, s);
+    }
+
+    // 3. Copy Constructor (Constructor Overloading)
+    String(const String& other) {
+        length = other.length;
+        str = new char[length + 1];
+        copyString(str, other.str);
+    }
+
+    // 4. Destructor
+    ~String() {
+        delete[] str;
+    }
+
+    // Member function to accept string input from the user
+    void Accept() {
+        char temp[1000]; // Temporary buffer to hold user input
+        cout << "Enter a string: ";
+        cin.getline(temp, 1000); // Reads the whole line including spaces
+        
+        // Free previously allocated memory before storing new data
+        delete[] str; 
+        
+        length = calculateLength(temp);
+        str = new char[length + 1];
+        copyString(str, temp);
+    }
+
+    // Member function to display the string
+    void Display() {
+        cout << str << endl;
+    }
+};
+
+// Main Function
+int main() {
+    // Calling Default Constructor
+    String s1; 
+    
+    // Calling Parameterized Constructor
+    String s2("Hello, World!"); 
+    
+    // Calling Copy Constructor
+    String s3(s2); 
+
+    // Displaying initial object states
+    cout << "Initial value of s1 (Default): ";
+    s1.Display();
+    
+    cout << "Initial value of s2 (Parameterized): ";
+    s2.Display();
+    
+    cout << "Initial value of s3 (Copy of s2): ";
+    s3.Display();
+
+    // Accepting user input for s1
+    cout << "\nInput data for s1:\n";
+    s1.Accept();
+
+    // Displaying the updated result
+    cout << "\nUpdated value of s1: ";
+    s1.Display();
+
+    return 0;
+}
