@@ -1,5 +1,5 @@
-#include <iostream>
-using namespace std;
+#include <iostream>              // Include the standard input-output stream library
+using namespace std;            // Use the standard namespace so we don't need to write std::
 
 class Complex {
 private:
@@ -8,12 +8,13 @@ private:
 
 public:
 
-    Complex(double r = 0, double i = 0) {
+    Complex(double r = 0, double i = 0)    //Parameterized Constructor To Initialize the real and imag
+    {
         real = r;
         imag = i;
     }
 
-// Get Data From User 
+    // Member Function To Get Real And Imaginary Data From User 
     void getData() {
         cout << "Enter real part: ";
         cin >> real;
@@ -21,7 +22,7 @@ public:
         cin >> imag;
     }
 
-// Function For Display Data 
+    // Function For Display real and imagnary  Data 
     void displayData() {
         if (imag >= 0)
             cout << real << " + " << imag << "i" << endl;
@@ -29,16 +30,17 @@ public:
             cout << real << " - " << -imag << "i" << endl;
     }
 
-
-    Complex operator/(Complex c); // Defining Operator Overloading 
+    // Declaration of member function for division operator overloading (/)
+    Complex operator/(Complex c);           
 };
 
 
+// Definition of the overloaded division operator (this / c)
 Complex Complex::operator/(Complex c) {
-    Complex temp;
+    Complex temp;                                                         // Temperory Object to store the result 
     double denominator = (c.real * c.real) + (c.imag * c.imag);
 
-    if (denominator == 0) {
+    if (denominator == 0) {                                              // Check Denominator 
         cout << "Error: Cannot divide by zero complex number." << endl;
         temp.real = 0;
         temp.imag = 0;
@@ -52,22 +54,25 @@ Complex Complex::operator/(Complex c) {
 
 //Main Function 
 int main() {
-    Complex s1, s2, result;
-// Function call
+    Complex s1, s2, result;       // Object Decleration And Calling to constructor 
+
+// Function call for get data 
     cout << "Input First Complex Number:\n";
     s1.getData();
     
     cout << "tInput Second Complex Number:\n";
     s2.getData();
 
+// Function call for Display data 
     cout << "\nFirst Complex Number: ";
     s1.displayData();
     cout << "Second Complex Number: ";
     s2.displayData();
 
-// Display Result 
+
     result = s1 / s2; 
 
+// Display Result 
     cout << "\nResult of Division: ";
     result.displayData();
 
