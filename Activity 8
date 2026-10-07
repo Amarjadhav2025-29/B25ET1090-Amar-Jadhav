@@ -1,0 +1,79 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class for employee basic information
+class Employee {
+protected:
+    int empId;
+    string name;
+    string designation;
+
+public:
+    void getEmployeeDetails() {
+        cout << "Enter Employee ID: ";
+        cin >> empId;
+
+        cout << "Enter Employee Name: ";
+        cin >> name;
+
+        cout << "Enter Designation: ";
+        cin >> designation;
+    }
+
+    void displayEmployeeDetails() {
+        cout << "\nEmployee ID   : " << empId;
+        cout << "\nEmployee Name : " << name;
+        cout << "\nDesignation   : " << designation;
+    }
+};
+
+// Base class for bank information
+class Bank {
+protected:
+    string accountNo;
+    string bankName;
+    double salary;
+
+public:
+    void getBankDetails() {
+        cout << "Enter Bank Name: ";
+        cin >> bankName;
+
+        cout << "Enter Account Number: ";
+        cin >> accountNo;
+
+        cout << "Enter Monthly Salary: ";
+        cin >> salary;
+    }
+
+    void displayBankDetails() {
+        cout << "\nBank Name     : " << bankName;
+        cout << "\nAccount Number: " << accountNo;
+        cout << "\nMonthly Salary: " << salary;
+    }
+};
+
+// Multiple inheritance
+class EmployeeSalary : public Employee, public Bank {
+public:
+    void displayDetails() {
+        displayEmployeeDetails();
+        displayBankDetails();
+    }
+};
+
+int main() {
+    EmployeeSalary emp;
+
+    cout << "Enter Employee Details\n";
+    emp.getEmployeeDetails();
+
+    cout << "\nEnter Bank Details\n";
+    emp.getBankDetails();
+
+    cout << "\n\n----- Employee Salary Account Details -----";
+    emp.displayDetails();
+
+    return 0;
+}
