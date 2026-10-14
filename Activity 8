@@ -1,79 +1,79 @@
-#include <iostream>
-#include <string>
-using namespace std;
+#include <iostream>       // Header file for input and output
+#include <string>         // Header file for string data type
+using namespace std;      // Use standard namespace
 
 // Base class for employee basic information
 class Employee {
-protected:
-    int empId;
-    string name;
-    string designation;
+protected:                // Accessible within this class and derived classes
+    int empId;            // Variable to store employee ID
+    string name;          // Variable to store employee name
+    string designation;   // Variable to store employee designation
 
-public:
-    void getEmployeeDetails() {
-        cout << "Enter Employee ID: ";
-        cin >> empId;
+public:                   // Accessible from outside the class
+    void getEmployeeDetails() {     // Function to input employee details
+        cout << "Enter Employee ID: ";  // Ask for employee ID
+        cin >> empId;                  // Read employee ID
 
-        cout << "Enter Employee Name: ";
-        cin >> name;
+        cout << "Enter Employee Name: "; // Ask for employee name
+        cin >> name;                     // Read employee name
 
-        cout << "Enter Designation: ";
-        cin >> designation;
+        cout << "Enter Designation: ";   // Ask for designation
+        cin >> designation;              // Read designation
     }
 
-    void displayEmployeeDetails() {
-        cout << "\nEmployee ID   : " << empId;
-        cout << "\nEmployee Name : " << name;
-        cout << "\nDesignation   : " << designation;
+    void displayEmployeeDetails() {    // Function to display employee details
+        cout << "\nEmployee ID   : " << empId;       // Display employee ID
+        cout << "\nEmployee Name : " << name;        // Display employee name
+        cout << "\nDesignation   : " << designation; // Display designation
     }
 };
 
 // Base class for bank information
 class Bank {
-protected:
-    string accountNo;
-    string bankName;
-    double salary;
+protected:                // Accessible within this class and derived classes
+    string accountNo;     // Variable to store bank account number
+    string bankName;      // Variable to store bank name
+    double salary;        // Variable to store monthly salary
 
-public:
-    void getBankDetails() {
-        cout << "Enter Bank Name: ";
-        cin >> bankName;
+public:                   // Accessible from outside the class
+    void getBankDetails() {       // Function to input bank details
+        cout << "Enter Bank Name: ";  // Ask for bank name
+        cin >> bankName;              // Read bank name
 
-        cout << "Enter Account Number: ";
-        cin >> accountNo;
+        cout << "Enter Account Number: "; // Ask for account number
+        cin >> accountNo;                 // Read account number
 
-        cout << "Enter Monthly Salary: ";
-        cin >> salary;
+        cout << "Enter Monthly Salary: "; // Ask for monthly salary
+        cin >> salary;                    // Read monthly salary
     }
 
-    void displayBankDetails() {
-        cout << "\nBank Name     : " << bankName;
-        cout << "\nAccount Number: " << accountNo;
-        cout << "\nMonthly Salary: " << salary;
+    void displayBankDetails() {    // Function to display bank details
+        cout << "\nBank Name     : " << bankName;       // Display bank name
+        cout << "\nAccount Number: " << accountNo;      // Display account number
+        cout << "\nMonthly Salary: " << salary;         // Display monthly salary
     }
 };
 
-// Multiple inheritance
+// Multiple inheritance: EmployeeSalary inherits from Employee and Bank
 class EmployeeSalary : public Employee, public Bank {
-public:
-    void displayDetails() {
-        displayEmployeeDetails();
-        displayBankDetails();
+public:                         // Public access specifier
+    void displayDetails() {     // Function to display all details
+        displayEmployeeDetails(); // Call function of Employee class
+        displayBankDetails();     // Call function of Bank class
     }
 };
 
-int main() {
-    EmployeeSalary emp;
+int main() {                    // Main function: program execution starts here
+    EmployeeSalary emp;         // Create object of EmployeeSalary class
 
-    cout << "Enter Employee Details\n";
-    emp.getEmployeeDetails();
+    cout << "Enter Employee Details\n"; // Display employee details heading
+    emp.getEmployeeDetails();            // Input employee details
 
-    cout << "\nEnter Bank Details\n";
-    emp.getBankDetails();
+    cout << "\nEnter Bank Details\n";    // Display bank details heading
+    emp.getBankDetails();                // Input bank details
 
-    cout << "\n\n----- Employee Salary Account Details -----";
-    emp.displayDetails();
+    cout << "\n\n----- Employee Salary Account Details -----"; // Print heading
+    emp.displayDetails();                // Display all employee and bank details
 
-    return 0;
+    return 0;                   // End the program successfully
 }
