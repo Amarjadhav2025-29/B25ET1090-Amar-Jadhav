@@ -1,0 +1,33 @@
+#include <iostream>                    // Header file for input and output
+#include <exception>                   // Header file for exception handling
+using namespace std;                  // Use standard namespace
+
+class InsufficientBalance {          // Define custom exception class
+public: 
+    void message() {                 // Function to display error message
+        cout << "Insufficient Bank Balance!" << endl;
+    }
+};
+ 
+int main() {                         // Main function
+    double balance = 1000;           // Initial bank balance
+    double amount;                   // Variable to store withdrawal amount
+ 
+    cout << "Enter withdrawal amount: ";     // Ask user for amount
+    cin >> amount;                           // Read withdrawal amount
+
+    try {                              // Start try block
+        if (amount > balance) {        // Check if balance is insufficient
+            throw InsufficientBalance();    // Throw custom exception
+        }
+
+        balance = balance - amount;                  // Deduct withdrawal amount
+        cout << "Withdrawal Successful!" << endl;    // Display success
+        cout << "Remaining Balance: " << balance << endl;   // Display balance
+    }
+    catch (InsufficientBalance e) {   // Catch custom exception
+        e.message();                  // Display error message
+    }
+
+    return 0;                        // End program
+} 
