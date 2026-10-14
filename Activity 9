@@ -1,0 +1,45 @@
+#include <iostream>              // Header file for input and output
+using namespace std;              // Use standard namespace
+
+class Machine                     // Base class
+{
+public:
+    virtual void start()          // Virtual function
+    {
+        cout << "Machine is starting" << endl;  // Display message
+    }
+};
+
+class Printer : public Machine    // Printer inherits Machine
+{
+public:
+    void start()                  // Override start() function
+    {
+        cout << "Printer is starting" << endl;  // Display message
+    }
+};
+
+class Scanner : public Machine    // Scanner inherits Machine
+{
+public:
+    void start()                  // Override start() function
+    {
+        cout << "Scanner is starting" << endl;  // Display message
+    }
+};
+
+int main()                        // Main function
+{
+    Machine *m;                   // Base class pointer
+
+    Printer p;                    // Create Printer object
+    Scanner s;                    // Create Scanner object
+
+    m = &p;                       // Pointer points to Printer object
+    m->start();                   // Calls Printer's start() function
+
+    m = &s;                       // Pointer points to Scanner object
+    m->start();                   // Calls Scanner's start() function
+
+    return 0;                     // End program
+}
