@@ -1,0 +1,29 @@
+#include <iostream> 
+using namespace std;
+
+namespace first
+{
+    int num = 20;
+    void display()
+        {
+            cout<<"first no: "<<num<<"\n";
+        }
+}
+
+namespace second 
+{
+    int num = 10 ;
+    void display()
+    {
+        cout<<"second no: "<<num<<"\n";
+    }
+}
+
+int main ()
+{
+    cout<<"first no:"<<first::num<<"\n";
+    cout<<"second NO:"<<second :: num<<"\n";
+     first::display();
+    second::display();
+return 0;
+}
